@@ -27,8 +27,8 @@ def get_info():
         "current_day": datetime.datetime.now().strftime("%A"),
         "utc_time": utc_time,
         "track": tracks[track_code],
-        "github_file_url": "https://github.com/username/repo/blob/main/file_name.ext",
-        "github_repo_url": "https://github.com/username/repo",
+        "github_file_url": "https://github.com/Resa200/HNGX-Internship-Tasks/blob/master/TASK1/api.py",
+        "github_repo_url": "https://github.com/Resa200/HNGX-Internship-Tasks",
         "status_code": 200
     }
 
