@@ -1,200 +1,143 @@
 # API Documentation
 
-Welcome to the documentation for the API. This documentation provides a detailed guide on how to use our API for managing persons.
+## Overview
 
-## Table of Contents
+This is the documentation for a simple Flask API for managing persons. This API allows you to perform basic CRUD (Create, Read, Update, Delete) operations on a "person" resource.
 
-1. **Introduction**
-    - [Overview](#overview)
-
-
-2. **Getting Started**
-    - [Base URL](#base-url)
-
-
-3. **API Endpoints**
-    - [Create a Person](#create-a-person)
-    - [Retrieve a Person](#retrieve-a-person)
-    - [Update a Person](#update-a-person)
-    - [Delete a Person](#delete-a-person)
-
-4. **Sample Requests and Responses**
-    - [Create a Person (POST)](#sample-create-person-request-and-response)
-    - [Retrieve a Person (GET)](#sample-retrieve-person-request-and-response)
-    - [Update a Person (PUT)](#sample-update-person-request-and-response)
-    - [Delete a Person (DELETE)](#sample-delete-person-request-and-response)
-
-5. **Error Codes**
-    - [HTTP Status Codes](#http-status-codes)
-    - [Error Response Format](#error-response-format)
-
-6. **Conclusion**
-    - [Conclusion](#conclusion)
-
----
-
-## 1. Introduction
-
-### Overview
-
-The [Your API Name] API is a RESTful API that allows you to perform CRUD operations on a "person" resource. You can create, retrieve, update, and delete persons using this API.
-
-## 2. Getting Started
-
-### Base URL
+## Base URL
 
 The base URL for all API endpoints is:
 
 ```
-[API Base URL]
+http://127.0.0.1:5000/api
 ```
 
-## 3. API Endpoints
+## Running Locally
 
-### Create a Person
+To run the API locally on your machine, follow these steps:
 
-**Endpoint**: `/api` (POST)
+1. **Clone the Repository:**
 
-**Description**: Create a new person.
+   Clone the API repository to your local machine using Git:
 
-**Request Format**:
+   ```bash
+   git clone https://github.com/Resa200/HNGX-Internship-Tasks.git
+   ```
 
-```json
-{
-    "name": "John Doe"
-}
-```
+2. **Navigate to the API Directory:**
 
-**Response Format**:
+   Change your working directory to the API directory:
 
-```json
-{
-    "message": "Person created successfully"
-}
-```
+   ```bash
+   cd TASK2
+   ```
 
-### Retrieve a Person
+3. **Install Dependencies:**
 
-**Endpoint**: `/api/{user_id}` (GET)
+   Install the required dependencies using pip:
 
-**Description**: Retrieve details of a person.
+   ```bash
+   pip install requirements.txt
+   ```
 
-**Response Format**:
+4. **Run the API:**
 
-```json
-{
-    "id": 1,
-    "name": "John Doe"
-}
-```
+   Start the API by running the following command:
 
-### Update a Person
+   ```bash
+   flask --app api.py run
+   ```
 
-**Endpoint**: `/api/{user_id}` (PUT)
+   The API will start locally and be accessible at `http://127.0.0.1:5000/api`.
 
-**Description**: Update details of an existing person.
+## Using the Deployed Endpoint
 
-**Request Format**:
-
-```json
-{
-    "name": "Jane Doe"
-}
-```
-
-**Response Format**:
-
-```json
-{
-    "message": "Person updated successfully"
-}
-```
-
-### Delete a Person
-
-**Endpoint**: `/api/{user_id}` (DELETE)
-
-**Description**: Delete a person.
-
-**Response Format**:
-
-```json
-{
-    "message": "Person deleted successfully"
-}
-```
-
-## 4. Sample Requests and Responses
-
-### Sample Create Person Request and Response
-
-**Request**:
+The API is deployed and hosted on a server, you can use the following URL to access it:
 
 ```
-POST [API Base URL]/api
-Content-Type: application/json
-
-{
-    "name": "John Doe"
-}
+https://task2-api.onrender.com/api
 ```
 
-**Response**:
+## API Endpoints
 
-```json
-{
-    "message": "Person created successfully"
-}
-```
+### Create a Person (POST)
 
-### Sample Retrieve Person Request and Response
+- **Endpoint**: `/api`
+- **Description**: Create a new person.
+- **Request Format**:
+  - Method: POST
+  - Content-Type: application/json
+  - Body:
+    ```json
+    {
+        "name": "John Doe"
+    }
+    ```
+- **Response Format**:
+  - Status Code: 201 (Created)
+  - Body:
+    ```json
+    {
+        "message": "Person created successfully"
+    }
+    ```
 
-**Request**:
+### Retrieve a Person (GET)
 
-```
-GET [API Base URL]/api/1
-```
+- **Endpoint**: `/api/{user_id}`
+- **Description**: Retrieve details of a person by their `user_id`.
+- **Request Format**:
+  - Method: GET
+  - URL: `/api/{user_id}`
+- **Response Format**:
+  - Status Code: 200 (OK)
+  - Body:
+    ```json
+    {
+        "id": 1,
+        "name": "John Doe"
+    }
+    ```
 
-**Response**:
+### Update a Person (PUT)
 
-```json
-{
-    "id": 1,
-    "name": "John Doe"
-}
-```
+- **Endpoint**: `/api/{user_id}`
+- **Description**: Update details of an existing person by their `user_id`.
+- **Request Format**:
+  - Method: PUT
+  - Content-Type: application/json
+  - Body:
+    ```json
+    {
+        "name": "Jane Doe"
+    }
+    ```
+- **Response Format**:
+  - Status Code: 200 (OK)
+  - Body:
+    ```json
+    {
+        "message": "Person updated successfully"
+    }
+    ```
 
-[Continue with sample requests and responses for update and delete operations.]
+### Delete a Person (DELETE)
 
-## 5. Error Codes
+- **Endpoint**: `/api/{user_id}`
+- **Description**: Delete a person by their `user_id`.
+- **Request Format**:
+  - Method: DELETE
+  - URL: `/api/{user_id}`
+- **Response Format**:
+  - Status Code: 200 (OK)
+  - Body:
+    ```json
+    {
+        "message": "Person deleted successfully"
+    }
+    ```
 
-### HTTP Status Codes
+## Error Handling
 
-- 200 OK: The request was successful.
-- 201 Created: The resource was successfully created.
-- 204 No Content: The request was successful, but there is no response body.
-- 400 Bad Request: The request is malformed or invalid.
-- 401 Unauthorized: Authentication is required or credentials are invalid.
-- 403 Forbidden: The request is not allowed.
-- 404 Not Found: The requested resource does not exist.
-- 500 Internal Server Error: An unexpected server error occurred.
-
-### Error Response Format
-
-Error responses will be in the following format:
-
-```json
-{
-    "error": "Error message"
-}
-```
-
-## 6. Conclusion
-
-This concludes the documentation for the [Your API Name] API. If you have any questions or need further assistance, please contact our support team at [support@email.com].
-
-Thank you for using our API!
-
----
-
-Please replace `[Your API Name]`, `[API Base URL]`, and other placeholders with your actual API information. Additionally, provide more details and examples for each endpoint as needed for your specific API.
+- If a request is malformed or missing required fields, the API will respond with a 400 (Bad Request) status code and an error message.
+- If a requested person does not exist (e.g., when retrieving or updating), the API will respond with a 404 (Not Found) status code and an error message.

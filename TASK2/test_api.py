@@ -1,9 +1,9 @@
 import requests
 import json
 
-# Define the base URL of your Flask API
-base_url = 'http://127.0.0.1:5000/api'  # Update with your API URL
-# base_url = 'https://task2-api.onrender.com/api'
+# base url of FLASK API
+# base_url = 'http://127.0.0.1:5000/api'  
+base_url = 'https://task2-api.onrender.com/api'
 
 # Function to print response nicely
 def pretty_print_response(response):
@@ -37,7 +37,7 @@ def delete_person(user_id):
     return response
 
 if __name__ == '__main__':
-    # Test the API operations
+    # Testing the API operations
     # Create a new person with a valid name
     create_response = create_person("John Doe")
     print("Create Person Response:")
