@@ -17,6 +17,7 @@ class Person(db.Model):
 with app.app_context():
     db.create_all()
 
+#create person
 @app.route('/api', methods=['POST'])
 def create_person():
     data = request.get_json()
@@ -30,6 +31,7 @@ def create_person():
     db.session.commit()
     return jsonify({"message": "Person created successfully"}), 201
 
+#manage person
 @app.route('/api/<int:user_id>', methods=['GET', 'PUT', 'DELETE'])
 def manage_person(user_id):
     person = Person.query.get(user_id)
