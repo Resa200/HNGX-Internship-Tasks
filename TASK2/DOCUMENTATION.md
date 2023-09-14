@@ -50,6 +50,14 @@ To run the API locally on your machine, follow these steps:
 
    The API will start locally and be accessible at `http://127.0.0.1:5000/api`.
 
+5. **Test the API:**
+
+    Test the API by running the following command:
+
+    ```
+    python test_api.py
+    ```
+
 ## Using the Deployed Endpoint
 
 The API is deployed and hosted on a server, you can use the following URL to access it:
