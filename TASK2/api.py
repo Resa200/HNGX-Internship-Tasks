@@ -22,8 +22,8 @@ def create_person():
     data = request.get_json()
     name = data.get('name')
 
-    if not name:
-        return jsonify({"error": "Name is required"}), 400
+    if not name or not isinstance(name, str):
+        return jsonify({"error": "Name is required and should be a string"}), 400
 
     new_person = Person(name=name)
     db.session.add(new_person)
@@ -32,7 +32,10 @@ def create_person():
 
 @app.route('/api/<int:user_id>', methods=['GET', 'PUT', 'DELETE'])
 def manage_person(user_id):
-    person = Person.query.get_or_404(user_id)
+    person = Person.query.get(user_id)
+
+    if not person:
+        return jsonify({"error": "Person not found"}), 404
 
     if request.method == 'GET':
         return jsonify({"id": person.id, "name": person.name})
@@ -41,8 +44,8 @@ def manage_person(user_id):
         data = request.get_json()
         name = data.get('name')
 
-        if not name:
-            return jsonify({"error": "Name is required"}), 400
+        if not name or not isinstance(name, str):
+            return jsonify({"error": "Name is required and should be a string"}), 400
 
         person.name = name
         db.session.commit()
