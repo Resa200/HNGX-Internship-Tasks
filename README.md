@@ -1,1 +1,1 @@
-A collation of tasks and solutions for the HNGx Internship 2023
+A collation of tasks and solutions for the HNGx Internship 2023.
